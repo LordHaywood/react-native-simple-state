@@ -1,0 +1,31 @@
+{
+  "name": "react-native-simple-state",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "React Native module to allow for setting and getting of nested objects within the components state via strings",
+  "keywords": [
+    "react-native",
+    "state",
+    "object",
+    "nested-objects",
+    "component",
+    "state-search",
+    "class"
+  ],
+  "main": "index.js",
+  "author": {
+    "name": "Thomas Haywood",
+    "email": "tom.haywood2@gmail.com",
+    "url": "http://haywoodsolutions.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihor/react-native-scalable-image.git"
+  },
+  "dependencies": {},
+  "bugs": {
+    "url": "https://github.com/TuNguyenThanh/react-native-category/issues"
+  },
+  "homepage": "https://github.com/TuNguyenThanh/react-native-category#readme",
+  "scripts": {}
+}
