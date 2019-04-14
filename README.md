@@ -47,16 +47,16 @@ Install
 Usage
 =====
 
-# Getting Started
+## Getting Started
 
-## Importing
+### Importing
 Import the Component like this
 
  ```jsx
 import Component from 'react-native-simple-state';
  ```
 
-## Linking to React Native Component
+### Linking to React Native Component
 Import the Component like this, just as you would with the React Native Component. Don't forget to parse the props of the parent.
 
  ```jsx
@@ -68,12 +68,12 @@ class SimpleStateComponent extends Component {
 }
  ```
 
-# Methods
+## Methods
 
-## placeState
+### placeState
 Sets the provided value into the current state at the nested object identified by the key provided as parameter.
 
-### Params
+#### Params
 | name    | type   | description                                                                 |
 | ------- | ------ | --------------------------------------------------------------------------- |
 | `key`   | string | The key that specifies the nested object to insert the value into the state |
@@ -83,15 +83,15 @@ Sets the provided value into the current state at the nested object identified b
 ### retreveState
 Gets the value from the current state at the nested object identified by the key provided as parameter.
 
-### Params
+#### Params
 | name    | type   | description                                                                 |
 | ------- | ------ | --------------------------------------------------------------------------- |
 | `key`   | string | The key that specifies the nested object retreve the value from the state   |
 
-### Returns
+#### Returns
 | type   | description                                                                           |
 | ------ | ------------------------------------------------------------------------------------- |
-| object | The value that was in the current state at the specified nested object from the key   |
+| `object` | The value that was in the current state at the specified nested object from the key   |
 
 
 # Examples
