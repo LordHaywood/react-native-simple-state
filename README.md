@@ -1,6 +1,6 @@
 React Native Simple State
 ===========================
-[![nBuild Stat](https://travis-ci.org/HaywoodSolutions/react-native-simple-state.svg?branch=master)](https://badge.fury.io/js/react-native-category)
+[![npm version](https://badge.fury.io/js/react-native-simple-state.svg)](https://badge.fury.io/js/react-native-simple-state) [![nBuild Stat](https://travis-ci.org/HaywoodSolutions/react-native-simple-state.svg?branch=master)](https://badge.fury.io/js/react-native-category)
 
 React Native Components State doesn't provide a clean way to update or retreive nested object elements. React Native Simple State is a way to solve this by adding further methods to state providing editing sub elements without having to requesting the whole state to update a single node deep within the object.
 
