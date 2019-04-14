@@ -1,6 +1,6 @@
 {
   "name": "react-native-simple-state",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "description": "React Native module to allow for setting and getting of nested objects within the components state via strings",
   "keywords": [
