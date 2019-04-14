@@ -28,10 +28,10 @@ function isArray(value) {
   return value && typeof value === 'object' && value.constructor === Array;
 }
 
-function removeFromState(currentBranch, keys) {
+function removeFromState(currentBranch, keys, currentFullKey) {
   let key = keys.shift();
-  if (!currentBranch) 
-    return null;
+  if (!currentBranch)
+    throw `Branch on state ${keyToString(currentFullKey)} doesn't exist`;
 
   if (keys.length === 0)  {
     if (isArray(currentBranch)) {
@@ -42,7 +42,7 @@ function removeFromState(currentBranch, keys) {
     return currentBranch;
   } else return {
     ...currentBranch,
-    [key]: removeFromState(currentBranch[key], keys)
+    [key]: removeFromState(currentBranch[key], keys, currentFullKey)
   }
 }
 
@@ -73,6 +73,6 @@ export default class Component extends React.Component {
   }
 
   deleteState(key) {
-    super.setState(removeFromState(this.state, getKey(key)));
+    super.setState(removeFromState(this.state, getKey(key), []));
   }
 }
