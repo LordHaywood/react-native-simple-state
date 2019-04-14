@@ -20,7 +20,29 @@ function spreadOper(currentBranch, keys, value, merge) {
   }
   : {
     ...currentBranch,
-    [key]: spreadOper(currentBranch[key], keys, value)
+    [key]: spreadOper(currentBranch[key], keys, value, merge)
+  }
+}
+
+function isArray(value) {
+  return value && typeof value === 'object' && value.constructor === Array;
+}
+
+function removeFromState(currentBranch, keys) {
+  let key = keys.shift();
+  if (!currentBranch) 
+    return null;
+
+  if (keys.length === 0)  {
+    if (isArray(currentBranch)) {
+      currentBranch.splice(parseInt(key), 1);
+    } else {
+      delete currentBranch[key];
+    }
+    return currentBranch;
+  } else return {
+    ...currentBranch,
+    [key]: removeFromState(currentBranch[key], keys)
   }
 }
 
@@ -48,5 +70,9 @@ export default class Component extends React.Component {
 
   updateState(key, value) {
     this.placeState(key, value, true);
+  }
+
+  deleteState(key) {
+    super.setState(removeFromState(this.state, getKey(key)));
   }
 }

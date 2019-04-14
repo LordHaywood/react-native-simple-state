@@ -71,17 +71,18 @@ class SimpleStateComponent extends Component {
 ## Methods
 
 ### placeState
-Sets the provided value into the current state at the nested object identified by the key provided as parameter.
+Writes to the nested object referred to by this key. If the object does not exist yet, it will be created. If you activate merge, the provided object can be merged into the existing object.
 
 #### Params
 | name    | type   | description                                                                 |
 | ------- | ------ | --------------------------------------------------------------------------- |
 | `key`   | string | The key that specifies the nested object to insert the value into the state |
-| `value` | object | The value to insert at the specified nested object                          |
+| `data` | object | An object of the fields and values for the nested object. Value must not be null. |
+| `merge` | boolean (optional) | An object to configure the placeState behavior. Pass true to only replace the values specified in the data argument. Fields omitted will remain untouched. Value must not be null. |
 
 
 ### retreveState
-Gets the value from the current state at the nested object identified by the key provided as parameter.
+Reads the document referred to by this key.
 
 #### Params
 | name    | type   | description                                                                 |
@@ -91,8 +92,24 @@ Gets the value from the current state at the nested object identified by the key
 #### Returns
 | type   | description                                                                           |
 | ------ | ------------------------------------------------------------------------------------- |
-| `object` | The value that was in the current state at the specified nested object from the key   |
+| `object` | The value of the nested object   |
 
+### updateState
+Updates fields in the nested object referred to by this key. The update will fail if applied to a document that does not exist.
+
+#### Params
+| name    | type   | description                                                                 |
+| ------- | ------ | --------------------------------------------------------------------------- |
+| `key`   | string | The key that specifies the nested object the value to be merged with, within the state |
+| `value` | object | An object containing all of the fields and values to update. Value may be repeated.  |
+
+### deleteState
+Deletes the nested object referred to by this key
+
+#### Params
+| name    | type   | description                                                                 |
+| ------- | ------ | --------------------------------------------------------------------------- |
+| `key`   | string | The key that specifies the nested object to remove from the state |
 
 # Examples
 
@@ -148,6 +165,64 @@ class CreatePostComponent extends Component {
       body: body,
       lastUpdated: new Date()
     });
+  }
+}
+ ```
+
+## Updating a Post
+This examplar module allows you to get a post by using the key to get a specific.
+
+ ```jsx
+import React from 'react';
+import Component from 'react-native-simple-state';
+
+class CreatePostComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: [
+        {
+          author: {
+            name: "Bob Turner"
+          },
+          body: "Hello"
+        }
+      ]
+    };
+  }
+  
+  updatePostBody(postId, body) {
+    this.updateState(`posts.${postId}`, {
+      body: body
+    });
+  }
+}
+ ```
+
+## Deleting a Post
+This examplar module allows you to get a post by using the key to get a specific.
+
+ ```jsx
+import React from 'react';
+import Component from 'react-native-simple-state';
+
+class CreatePostComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: [
+        {
+          author: {
+            name: "Bob Turner"
+          },
+          body: "Hello"
+        }
+      ]
+    };
+  }
+  
+  deletePost(postId) {
+    this.deleteState(`posts.${postId}`);
   }
 }
  ```

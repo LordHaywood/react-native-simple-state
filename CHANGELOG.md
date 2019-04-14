@@ -1,3 +1,8 @@
+#### 0.0.3
+* Fixed bug with placeState
+* Added updateState
+* Added deleteState
+
 #### 0.0.2
 * Fixed mounting retreveState to Component
 
