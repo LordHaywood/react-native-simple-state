@@ -195,6 +195,12 @@ class CreatePostComponent extends Component {
     this.updateState(`posts.${postId}`, {
       body: body
     });
+
+    // has same behavior has 
+
+    this.assignState(`posts.${postId}`, {
+      body: body
+    }, true); // merge activacted
   }
 }
  ```
