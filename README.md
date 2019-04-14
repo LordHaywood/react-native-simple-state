@@ -1,5 +1,7 @@
 React Native Simple State
 ===========================
+[![nBuild Status](https://travis-ci.org/HaywoodSolutions/react-native-simple-state.svg?branch=master)](https://badge.fury.io/js/react-native-category)
+
 React Native Components State doesn't provide a clean way to update or retreive nested object elements. React Native Simple State is a way to solve this by adding further methods to state providing editing sub elements without having to requesting the whole state to update a single node deep within the object.
 
 You will need to use a key to access specific nested objects, using full stops to seperate the keys for each objects. Therfore using ```posts.2.author.name``` would link to ```John Smith``` from the following object. With ```posts``` being the first element from the main object, then ```2``` will take the element from the array with index ```2```. Finally ```author.name``` will retreve the author object from the selected nested post object and retrive the name value.
