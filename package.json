@@ -20,12 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ihor/react-native-scalable-image.git"
+    "url": "git+https://github.com/HaywoodSolutions/react-native-simple-state.git"
   },
   "dependencies": {},
   "bugs": {
-    "url": "https://github.com/TuNguyenThanh/react-native-category/issues"
+    "url": "https://github.com/HaywoodSolutions/react-native-simple-state/issues"
   },
-  "homepage": "https://github.com/TuNguyenThanh/react-native-category#readme",
+  "homepage": "https://github.com/HaywoodSolutions/react-native-simple-state#readme",
   "scripts": {}
 }
