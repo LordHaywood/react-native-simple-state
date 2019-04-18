@@ -1,58 +1,5 @@
 import React from 'react';
-
-function getSpreadOper(currentBranch, keys, currentFullKey) {
-  let key = keys.shift();
-  currentFullKey = [...currentFullKey, ...[key]];
-  if (!currentBranch)
-    throw `Branch on state ${keyToString(currentFullKey)} doesn't exist`;
-  return (keys.length === 0) ? currentBranch[key] : getSpreadOper(currentBranch[key], keys, currentFullKey);
-}
-
-function spreadOper(currentBranch, keys, value, merge) {
-  let key = keys.shift();
-  if (!currentBranch) currentBranch = (parseInt(key) >= 0) ? [] : {};
-  return (keys.length === 0) ? {
-    ...currentBranch,
-    [key]: (merge) ? value : {
-      ...currentBranch[key],
-      ...value
-    }
-  }
-  : {
-    ...currentBranch,
-    [key]: spreadOper(currentBranch[key], keys, value, merge)
-  }
-}
-
-function isArray(value) {
-  return value && typeof value === 'object' && value.constructor === Array;
-}
-
-function removeFromState(currentBranch, keys, currentFullKey) {
-  let key = keys.shift();
-  if (!currentBranch)
-    throw `Branch on state ${keyToString(currentFullKey)} doesn't exist`;
-
-  if (keys.length === 0)  {
-    if (isArray(currentBranch)) {
-      currentBranch.splice(parseInt(key), 1);
-    } else {
-      delete currentBranch[key];
-    }
-    return currentBranch;
-  } else return {
-    ...currentBranch,
-    [key]: removeFromState(currentBranch[key], keys, currentFullKey)
-  }
-}
-
-function getKey(key) {
-  return key.split('.');
-}
-
-function keyToString(key) {
-  return key.join('.');
-}
+import { getFromObj, addToObj, removeFromObj, updateObj } from './lib/index';
 
 export default class Component extends React.Component {
   constructor(props) {
@@ -61,18 +8,18 @@ export default class Component extends React.Component {
   }
 
   placeState(key, value, merge) {
-    super.setState(spreadOper(this.state, getKey(key), value, merge));
+    super.setState(addToObj(this.state, key, value, merge));
   }
 
   retreveState(key) {
-    return(getSpreadOper(this.state, getKey(key), []));
+    return getFromObj(this.state, key);
   }
 
   updateState(key, value) {
-    this.placeState(key, value, true);
+    super.setState(updateObj(this.state, key, value));
   }
 
   deleteState(key) {
-    super.setState(removeFromState(this.state, getKey(key), []));
+    super.setState(removeFromObj(this.state, key));
   }
 }
