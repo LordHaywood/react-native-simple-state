@@ -117,9 +117,6 @@ Deletes the nested object referred to by this key
 This examplar module allows you to get a post by using the key to get a specific.
 
  ```jsx
-import React from 'react';
-import Component from 'react-native-simple-state';
-
 class CreatePostComponent extends Component {
   constructor(props) {
     super(props);
@@ -146,9 +143,6 @@ class CreatePostComponent extends Component {
 This examplar module allows you to create a post by creating a object and adding it directly into a nested object (in this case, and array).
 
  ```jsx
-import React from 'react';
-import Component from 'react-native-simple-state';
-
 class CreatePostComponent extends Component {
   constructor(props) {
     super(props);
@@ -173,9 +167,6 @@ class CreatePostComponent extends Component {
 This examplar module allows you to get a post by using the key to get a specific.
 
  ```jsx
-import React from 'react';
-import Component from 'react-native-simple-state';
-
 class CreatePostComponent extends Component {
   constructor(props) {
     super(props);
@@ -209,9 +200,6 @@ class CreatePostComponent extends Component {
 This examplar module allows you to get a post by using the key to get a specific.
 
  ```jsx
-import React from 'react';
-import Component from 'react-native-simple-state';
-
 class CreatePostComponent extends Component {
   constructor(props) {
     super(props);

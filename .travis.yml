@@ -1,3 +1,9 @@
 language: "node_js"
 node_js:
     - "node"
+deploy:
+  provider: npm
+  email: "thomashaywoodproductions@gmail.com"
+  api_key: "YDdNaQcjDogvc97XKoS6pQ"
+  on:
+    branch: master
